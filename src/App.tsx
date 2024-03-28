@@ -1,13 +1,13 @@
-import { Button, ConfigProvider } from "antd";
+import { ConfigProvider } from "antd";
 import "./App.css";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routers/router";
 
 function App() {
   return (
-    <>
-      <ConfigProvider direction="rtl">
-        <Button>My Button</Button>
-      </ConfigProvider>
-    </>
+    <ConfigProvider direction="ltr">
+      <RouterProvider router={router()} />
+    </ConfigProvider>
   );
 }
 
