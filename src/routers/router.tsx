@@ -1,6 +1,7 @@
 import { Spin } from "antd";
 import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
+import { ROUTER_NAME } from "../constant/router.constant";
 
 const DefaultLayout = lazy(() => import("../Auth/layouts/DefaultLayout"));
 
@@ -29,7 +30,15 @@ export const router = () =>
           ),
           children: [
             {
-              path: "/",
+              path: ROUTER_NAME.SIGN_IN,
+              element: (
+                <Suspense fallback={<Loading />}>
+                  <SignInPage />
+                </Suspense>
+              ),
+            },
+            {
+              path: ROUTER_NAME.DASHBOARD,
               element: (
                 <Suspense fallback={<Loading />}>
                   <DashboardPage />
@@ -38,15 +47,23 @@ export const router = () =>
               // loader: teamLoader,
             },
             {
-              path: "/sign-in",
+              path: ROUTER_NAME.EXAMPLE,
               element: (
                 <Suspense fallback={<Loading />}>
-                  <SignInPage />
+                  <ExamplePage />
                 </Suspense>
               ),
             },
             {
-              path: "/example",
+              path: "/example-1",
+              element: (
+                <Suspense fallback={<Loading />}>
+                  <ExamplePage />
+                </Suspense>
+              ),
+            },
+            {
+              path: "/example-3",
               element: (
                 <Suspense fallback={<Loading />}>
                   <ExamplePage />

@@ -7,3 +7,22 @@
   padding: 0;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
+
+.scrollbarNone::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset #f3f4f6;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 10px;
+}

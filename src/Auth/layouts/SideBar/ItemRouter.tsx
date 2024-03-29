@@ -1,39 +1,51 @@
 import { MailOutlined } from "@ant-design/icons";
 import { MenuProps, Tooltip } from "antd";
 import { Link } from "react-router-dom";
+import { ROUTER_NAME } from "../../../constant/router.constant";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
 export const sidebarItems: MenuItem[] = [
   {
-    label: <Link to={"/"}>Dashboard</Link>,
-    key: "dashboard",
+    label: (
+      <Tooltip title={"Dashboard"}>
+        <Link to={ROUTER_NAME.DASHBOARD}>Dashboard</Link>
+      </Tooltip>
+    ),
+    key: ROUTER_NAME.DASHBOARD,
     icon: <MailOutlined />,
   },
   {
     label: <>Example</>,
-    key: "example",
+    key: ROUTER_NAME.EXAMPLE,
     icon: <MailOutlined />,
     children: [
       {
-        label: <Link to={"/example"}>Example 1</Link>,
-        key: "example1",
+        label: (
+          <Tooltip title={"Example"}>
+            <Link to={ROUTER_NAME.EXAMPLE}>Example</Link>
+          </Tooltip>
+        ),
+        key: ROUTER_NAME.EXAMPLE,
+        icon: <MailOutlined />,
+      },
+      {
+        label: <Link to={"/example-1"}>Example 1</Link>,
+        key: "/example-1",
         icon: <MailOutlined />,
       },
       {
         label: <>Example 2</>,
-        key: "example2",
+        key: "example 2",
         icon: <MailOutlined />,
         children: [
           {
             label: (
-              <Tooltip title={"Example 3 đá sadas d đá ád ád ád á dá"}>
-                <Link to={"/example"}>
-                  Example 3 đá sadas d đá ád ád ád á dá
-                </Link>
+              <Tooltip title={"Example 3"}>
+                <Link to={"/example-3"}>Example 3</Link>
               </Tooltip>
             ),
-            key: "example3",
+            key: "/example-3",
             icon: <MailOutlined />,
           },
         ],

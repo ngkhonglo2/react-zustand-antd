@@ -13,7 +13,6 @@ const DefaultLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
   return (
     <Layout className="w-screen h-screen">
-      <SideBar collapsed={collapsed} />
       <Layout>
         <Header style={headerStyle}>
           <Button
@@ -27,9 +26,12 @@ const DefaultLayout = () => {
             }}
           />
         </Header>
-        <Content className="p-3">
-          <Outlet />
-        </Content>
+        <Layout>
+          <SideBar collapsed={collapsed} />
+          <Content className="p-3 overflow-auto">
+            <Outlet />
+          </Content>
+        </Layout>
       </Layout>
     </Layout>
   );
