@@ -8,6 +8,7 @@ const DefaultLayout = lazy(() => import("../Auth/layouts/DefaultLayout"));
 const DashboardPage = lazy(() => import("../pages/Dashboard"));
 const SignInPage = lazy(() => import("../Auth/SignIn"));
 const ExamplePage = lazy(() => import("../pages/Example"));
+const ExampleTable = lazy(() => import("../pages/Example/ExampleTable"))
 
 const Loading = () => (
   <Spin
@@ -55,10 +56,10 @@ export const router = () =>
               ),
             },
             {
-              path: "/example-1",
+              path: "/example-table",
               element: (
                 <Suspense fallback={<Loading />}>
-                  <ExamplePage />
+                  <ExampleTable />
                 </Suspense>
               ),
             },
