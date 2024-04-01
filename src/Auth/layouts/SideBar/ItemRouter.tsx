@@ -30,8 +30,8 @@ export const sidebarItems: MenuItem[] = [
         icon: <MailOutlined />,
       },
       {
-        label: <Link to={"/example-1"}>Example 1</Link>,
-        key: "/example-1",
+        label: <Link to={"/example-table"}>Example table</Link>,
+        key: "/example-table",
         icon: <MailOutlined />,
       },
       {
