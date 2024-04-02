@@ -26,3 +26,7 @@
   background: #d1d5db;
   border-radius: 10px;
 }
+
+.ant-table-wrapper .ant-table-thead > tr > th {
+  background: #93c5fd;
+}

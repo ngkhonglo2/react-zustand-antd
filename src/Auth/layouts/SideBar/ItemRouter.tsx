@@ -34,22 +34,22 @@ export const sidebarItems: MenuItem[] = [
         key: "/example-table",
         icon: <MailOutlined />,
       },
-      {
-        label: <>Example 2</>,
-        key: "example 2",
-        icon: <MailOutlined />,
-        children: [
-          {
-            label: (
-              <Tooltip title={"Example 3"}>
-                <Link to={"/example-3"}>Example 3</Link>
-              </Tooltip>
-            ),
-            key: "/example-3",
-            icon: <MailOutlined />,
-          },
-        ],
-      },
+      // {
+      //   label: <>Example 2</>,
+      //   key: "example 2",
+      //   icon: <MailOutlined />,
+      //   children: [
+      //     {
+      //       label: (
+      //         <Tooltip title={"Example 3"}>
+      //           <Link to={"/example-3"}>Example 3</Link>
+      //         </Tooltip>
+      //       ),
+      //       key: "/example-3",
+      //       icon: <MailOutlined />,
+      //     },
+      //   ],
+      // },
     ],
   },
 ];
