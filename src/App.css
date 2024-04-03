@@ -30,3 +30,11 @@
 .ant-table-wrapper .ant-table-thead > tr > th {
   background: #93c5fd;
 }
+
+.ant-row {
+  display: block;
+}
+
+.ant-form-item .ant-form-item-label {
+  text-align: left;
+}

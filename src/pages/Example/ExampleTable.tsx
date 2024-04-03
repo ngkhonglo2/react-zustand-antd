@@ -5,7 +5,7 @@ import { DownOutlined } from "@ant-design/icons";
 import type { GetProp, TableProps } from "antd";
 import { Space } from "antd";
 import CTable from "../../Components/Tables/CTable";
-import FormModal from "../../Components/Modal/FormModal";
+import ExampleModal from "../../Components/Modal/components/ExampleModal";
 
 type ColumnsType<T extends object> = GetProp<TableProps<T>, "columns">;
 type TableRowSelection<T extends object> = TableProps<T>["rowSelection"];
@@ -30,7 +30,16 @@ const ExampleTable = () => {
       title: "Name",
       dataIndex: "name",
       render: (name) => {
-        return <div className="cursor-pointer hover:text-blue-600" onClick={() => {setIsModalOpen(true)}}>{name}</div>;
+        return (
+          <div
+            className="cursor-pointer hover:text-blue-600"
+            onClick={() => {
+              setIsModalOpen(true);
+            }}
+          >
+            {name}
+          </div>
+        );
       },
     },
     {
@@ -103,12 +112,12 @@ const ExampleTable = () => {
         dataSource={data ? data : []}
         scroll={{ y: "60vh", x: "max-content" }}
       />
-      <FormModal
-        children={<></>}
-        setIsModalOpen={setIsModalOpen}
-        isModalOpen={isModalOpen}
-        title={'alo'}
-      />
+      {isModalOpen && (
+        <ExampleModal
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        />
+      )}
     </ContainerContent>
   );
 };
