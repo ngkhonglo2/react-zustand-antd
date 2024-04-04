@@ -1,6 +1,6 @@
 import { Button, Flex, Form, Input, Space, Table, TableProps } from "antd";
 import FormModal from "../FormModal";
-// import { validateEmail, validatePhone } from "../../../common/Validate";
+import { validateEmail, validatePhone } from "../../../common/Validate";
 import { CloseOutlined } from "@ant-design/icons";
 import { useEffect } from "react";
 
@@ -14,6 +14,15 @@ const ExampleModal = ({ isModalOpen, setIsModalOpen }: ExampleModalProps) => {
 
   const onFinish = (values: any) => {
     console.log(values);
+  };
+
+  const handleFinishTable = (
+    val: any,
+    add: (defaultValue?: any, insertIndex?: number | undefined) => void
+  ) => {
+    // return add({
+    //   ...val,
+    // });
   };
 
   const columnForm: (
@@ -73,7 +82,7 @@ const ExampleModal = ({ isModalOpen, setIsModalOpen }: ExampleModalProps) => {
       onFinish={onFinish}
       width={"auto"}
     >
-      {/* <Form.Item name="note" label="Note" rules={[{ required: true }]}>
+      <Form.Item name="note" label="Note" rules={[{ required: true }]}>
         <Input />
       </Form.Item>
       <Form.Item
@@ -91,7 +100,7 @@ const ExampleModal = ({ isModalOpen, setIsModalOpen }: ExampleModalProps) => {
         rules={[{ required: true }, { validator: validateEmail }]}
       >
         <Input />
-      </Form.Item> */}
+      </Form.Item>
       <Form.List name="items">
         {(fields, { add, remove }) => (
           <div style={{ display: "flex", rowGap: 16, flexDirection: "column" }}>
@@ -130,11 +139,19 @@ const ExampleModal = ({ isModalOpen, setIsModalOpen }: ExampleModalProps) => {
               pagination={false}
               bordered={true}
             />
-            <Flex>
-              <Button type="dashed" onClick={() => add()}>
-                + Add Item
-              </Button>
-            </Flex>
+            <Form.Item name="nestedForm">
+              <Flex gap={12}>
+                <Button type="dashed" htmlType="submit">
+                  Add Item
+                </Button>
+                <Form.Item name={"first"} rules={[{ required: true }]}>
+                  <Input />
+                </Form.Item>
+                <Form.Item name={"second"}>
+                  <Input />
+                </Form.Item>
+              </Flex>
+            </Form.Item>
           </div>
         )}
       </Form.List>
