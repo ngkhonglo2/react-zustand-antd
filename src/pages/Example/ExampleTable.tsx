@@ -5,7 +5,7 @@ import { DownOutlined } from "@ant-design/icons";
 import type { GetProp, TableProps } from "antd";
 import { Space } from "antd";
 import CTable from "../../Components/Tables/CTable";
-import ExampleModal from "../../Components/Modal/components/ExampleModal";
+import ExampleModal from "../../Components/Modal/Example/ExampleModal";
 
 type ColumnsType<T extends object> = GetProp<TableProps<T>, "columns">;
 type TableRowSelection<T extends object> = TableProps<T>["rowSelection"];
