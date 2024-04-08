@@ -2,13 +2,17 @@ import { Button, Col, Flex, Form, Row } from "antd";
 import FormModal from "../FormModal";
 import { validateEmail, validatePhone } from "../../../common/Validate";
 import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import DynamicFormListTable from "../../ChildInForms/DynamicFormListTable";
 import InputForm from "../../Input/InputForm";
-import { columnExampleTableForm } from "../../Columns/Example/ExampleColumn";
+import {
+  columnExampleTableForm,
+  columnExampleTableForm2,
+} from "../../Columns/Example/ExampleColumn";
 import TextAreaForm from "../../Input/TextAreaForm";
 import CTable from "../../Tables/CTable";
 import CInput from "../../Input/CInput";
-import { emailRegex } from "../../../common/Regex";
+import { useExample } from "../../../store/Example";
 
 interface ExampleModalProps {
   isModalOpen: boolean;
@@ -17,12 +21,20 @@ interface ExampleModalProps {
 
 const ExampleModal = ({ isModalOpen, setIsModalOpen }: ExampleModalProps) => {
   const [form] = Form.useForm();
-  const [input1Value, setInput1Value] = useState<string>("");
-  // const [input2Value, setInput2Value] = useState<string>("");
+  const [valName, setValName] = useState<string>("");
+  const [valAge, setValAge] = useState<string>("");
+
+  const { dataTableExample, add, remove, edit } = useExample((state) => state);
 
   const handleButtonClick = () => {
-    console.log("Input 1:", input1Value);
-    // console.log("Input 2:", input2Value);
+    const dataPath = {
+      key: uuidv4(),
+      name: valName,
+      age: Number(valAge),
+    };
+    add(dataPath);
+    setValName("");
+    setValAge("");
   };
 
   const onFinish = (values: any) => {
@@ -95,20 +107,20 @@ const ExampleModal = ({ isModalOpen, setIsModalOpen }: ExampleModalProps) => {
               Add Item
             </Button>
             <CInput
-              onChange={(val) => setInput1Value(val)}
-              value={input1Value}
-              rules={[{ pattern: emailRegex }, { required: true }]}
+              label={"Name"}
+              onChange={(val) => setValName(val)}
+              value={valName}
             />
-            <InputForm
-              name="phone"
-              label="Phone"
-              formItemProps={{
-                validateDebounce: 500,
-                rules: [{ validator: validatePhone }],
-              }}
+            <CInput
+              label={"Age"}
+              onChange={(val) => setValAge(val)}
+              value={valAge}
             />
           </Flex>
-          <CTable />
+          <CTable
+            dataSource={dataTableExample}
+            columns={columnExampleTableForm2(remove, edit)}
+          />
         </div>
       </div>
     </FormModal>
