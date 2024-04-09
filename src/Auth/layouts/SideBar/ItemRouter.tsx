@@ -15,6 +15,17 @@ export const sidebarItems: MenuItem[] = [
     key: ROUTER_NAME.DASHBOARD,
     icon: <MailOutlined />,
   },
+
+  {
+    label: (
+      <Tooltip title={"Customer"}>
+        <Link to={ROUTER_NAME.CUSTOMER}>Customer</Link>
+      </Tooltip>
+    ),
+    key: ROUTER_NAME.CUSTOMER,
+    icon: <MailOutlined />,
+  },
+
   {
     label: <>Example</>,
     key: ROUTER_NAME.EXAMPLE,

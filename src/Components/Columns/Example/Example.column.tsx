@@ -48,8 +48,6 @@ export const columnExampleTableForm2: (
     dataIndex: "name",
     width: 200,
     render: (name, res) => {
-      console.log("alo", name);
-
       return (
         <Input
           value={name}

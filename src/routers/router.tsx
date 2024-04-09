@@ -5,10 +5,16 @@ import { ROUTER_NAME } from "../constant/router.constant";
 
 const DefaultLayout = lazy(() => import("../Auth/layouts/DefaultLayout"));
 
-const DashboardPage = lazy(() => import("../pages/Dashboard"));
 const SignInPage = lazy(() => import("../Auth/SignIn"));
+const DashboardPage = lazy(() => import("../pages/Dashboard"));
+
+const CustomerPage = lazy(() => import("../pages/Customer"));
+const DefaultCustomerModal = lazy(
+  () => import("../Components/Modal/Customer/DefaultCustomerModal")
+);
+
 const ExamplePage = lazy(() => import("../pages/Example"));
-const ExampleTable = lazy(() => import("../pages/Example/ExampleTable"))
+const ExampleTable = lazy(() => import("../pages/Example/ExampleTable"));
 
 const Loading = () => (
   <Spin
@@ -46,6 +52,22 @@ export const router = () =>
                 </Suspense>
               ),
               // loader: teamLoader,
+            },
+            {
+              path: ROUTER_NAME.CUSTOMER,
+              element: (
+                <Suspense fallback={<Loading />}>
+                  <CustomerPage />
+                </Suspense>
+              ),
+            },
+            {
+              path: `${ROUTER_NAME.CUSTOMER}/create`,
+              element: (
+                <Suspense fallback={<Loading />}>
+                  <DefaultCustomerModal />
+                </Suspense>
+              ),
             },
             {
               path: ROUTER_NAME.EXAMPLE,

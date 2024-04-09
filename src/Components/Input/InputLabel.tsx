@@ -10,7 +10,7 @@ interface Rule {
   patternMessage?: string;
 }
 
-interface CInputProps {
+interface InputLabelProps {
   inputProps?: InputProps;
   rules?: Rule[];
   onChange: (
@@ -21,7 +21,7 @@ interface CInputProps {
   label: React.ReactNode;
 }
 
-const CInput = ({ inputProps, rules, onChange, value, label }: CInputProps) => {
+const InputLabel = ({ inputProps, rules, onChange, value, label }: InputLabelProps) => {
   const [error, setError] = useState("");
   const [statusInput, setStatusInput] = useState<InputStatus>();
 
@@ -81,4 +81,4 @@ const CInput = ({ inputProps, rules, onChange, value, label }: CInputProps) => {
   );
 };
 
-export default CInput;
+export default InputLabel;
