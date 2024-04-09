@@ -8,10 +8,10 @@ import InputForm from "../../Input/InputForm";
 import {
   columnExampleTableForm,
   columnExampleTableForm2,
-} from "../../Columns/Example/ExampleColumn";
+} from "../../Columns/Example/Example.column";
 import TextAreaForm from "../../Input/TextAreaForm";
 import CTable from "../../Tables/CTable";
-import CInput from "../../Input/CInput";
+import InputLabel from "../../Input/InputLabel";
 import { useExample } from "../../../store/Example";
 
 interface ExampleModalProps {
@@ -52,7 +52,7 @@ const ExampleModal = ({ isModalOpen, setIsModalOpen }: ExampleModalProps) => {
   return (
     <FormModal
       isModalOpen={isModalOpen}
-      setIsModalOpen={setIsModalOpen}
+      handleCancel={() => setIsModalOpen(false)}
       form={form}
       title={"Example"}
       onFinish={onFinish}
@@ -106,12 +106,12 @@ const ExampleModal = ({ isModalOpen, setIsModalOpen }: ExampleModalProps) => {
             <Button type="dashed" onClick={handleButtonClick}>
               Add Item
             </Button>
-            <CInput
+            <InputLabel
               label={"Name"}
               onChange={(val) => setValName(val)}
               value={valName}
             />
-            <CInput
+            <InputLabel
               label={"Age"}
               onChange={(val) => setValAge(val)}
               value={valAge}
