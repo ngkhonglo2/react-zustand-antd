@@ -15,7 +15,7 @@ const InputNumberForm = ({
 }: InputFormProps) => {
   return (
     <Form.Item name={name} label={label} {...formItemProps}>
-      <InputNumber {...inputProps} />
+      <InputNumber style={{ width: "100%" }} {...inputProps} />
     </Form.Item>
   );
 };

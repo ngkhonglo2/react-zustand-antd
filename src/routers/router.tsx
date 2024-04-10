@@ -9,9 +9,6 @@ const SignInPage = lazy(() => import("../Auth/SignIn"));
 const DashboardPage = lazy(() => import("../pages/Dashboard"));
 
 const CustomerPage = lazy(() => import("../pages/Customer"));
-const DefaultCustomerModal = lazy(
-  () => import("../Components/Modal/Customer/DefaultCustomerModal")
-);
 
 const ExamplePage = lazy(() => import("../pages/Example"));
 const ExampleTable = lazy(() => import("../pages/Example/ExampleTable"));
@@ -58,14 +55,6 @@ export const router = () =>
               element: (
                 <Suspense fallback={<Loading />}>
                   <CustomerPage />
-                </Suspense>
-              ),
-            },
-            {
-              path: `${ROUTER_NAME.CUSTOMER}/create`,
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <DefaultCustomerModal />
                 </Suspense>
               ),
             },

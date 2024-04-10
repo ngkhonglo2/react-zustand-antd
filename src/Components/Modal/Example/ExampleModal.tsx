@@ -66,7 +66,7 @@ const ExampleModal = ({ isModalOpen, setIsModalOpen }: ExampleModalProps) => {
               label="Phone"
               formItemProps={{
                 validateDebounce: 500,
-                rules: [{ validator: validatePhone }],
+                rules: [{ required: true }, { validator: validatePhone }],
               }}
             />
           </Col>

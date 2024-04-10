@@ -2,18 +2,20 @@ import { Button, Flex, TableProps, Typography } from "antd";
 import ContainerContent from "../../Components/ContainerContent";
 import CTable from "../../Components/Tables/CTable";
 import { TableRowSelection } from "antd/es/table/interface";
-import { useState } from "react";
+import { Suspense, lazy, useState } from "react";
 import { columnCustomer } from "../../Components/Columns/Customer/Customer.column";
 import { ICustomer } from "../../interfaces/Customer/customer.interface";
 import { useCustomer } from "../../store/Customer";
-import { useNavigate } from "react-router-dom";
-import { ROUTER_NAME } from "../../constant/router.constant";
+
+const DefaultCustomerModal = lazy(
+  () => import("../../Components/Modal/Customer/DefaultCustomerModal")
+);
 
 const { Title } = Typography;
 
 const CustomerPage = () => {
-  const navigate = useNavigate();
-  const { dataCustomers, handleOpenModal } = useCustomer((state) => state);
+  const { dataCustomers } = useCustomer((state) => state);
+  const [isOpen, setIsOpen] = useState(false);
   const [rowSelection, setRowSelection] = useState<
     TableRowSelection<ICustomer> | undefined
   >({});
@@ -27,14 +29,7 @@ const CustomerPage = () => {
   return (
     <ContainerContent title="Example table" propsTitle={Title}>
       <Flex justify="end">
-        <Button
-          onClick={() => {
-            navigate(`${ROUTER_NAME.CUSTOMER}/create`);
-            handleOpenModal();
-          }}
-        >
-          Thêm
-        </Button>
+        <Button onClick={() => setIsOpen(true)}>Thêm</Button>
       </Flex>
       <CTable
         {...tableProps}
@@ -42,6 +37,14 @@ const CustomerPage = () => {
         dataSource={dataCustomers}
         scroll={{ y: "60vh", x: "100vh" }}
       />
+      {isOpen && (
+        <Suspense>
+          <DefaultCustomerModal
+            isModalOpen={isOpen}
+            setIsModalOpen={setIsOpen}
+          />
+        </Suspense>
+      )}
     </ContainerContent>
   );
 };
