@@ -14,7 +14,7 @@ const TabsDefaultCustomer = ({ belongTo }: TabsDefaultCustomerProps) => {
     {
       label: `Thông tin liên hệ`,
       key: "1",
-      children: <ContactInfoInTabs />,
+      children: <ContactInfoInTabs belongTo={belongTo} />,
     },
     {
       label: `Điều khoản thanh toán`,
