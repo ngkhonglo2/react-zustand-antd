@@ -2,6 +2,7 @@ import { Col, Row } from "antd";
 import InputForm from "../../../../Components/Input/InputForm";
 import InputNumberForm from "../../../../Components/Input/InputNumerForm";
 import DatePickerForm from "../../../../Components/Input/DatePickerForm";
+import SelectForm from "../../../../Components/Input/SelectForm";
 
 interface ContactInfoInTabsProps {
   belongTo: string;
@@ -17,10 +18,18 @@ const ContactInfoInTabs = ({ belongTo }: ContactInfoInTabsProps) => {
               Thông tin liên hệ
             </div>
             <Row className="flex flex-col">
-              <InputForm
-                name="contact_person"
-                inputProps={{ placeholder: "Họ và tên" }}
-              />
+              <Row gutter={12}>
+                <Col span={6}>
+                  <SelectForm selectProps={{ placeholder: "Xưng hô" }} />
+                </Col>
+                <Col span={18}>
+                  <InputForm
+                    name="contact_person"
+                    inputProps={{ placeholder: "Họ và tên" }}
+                  />
+                </Col>
+              </Row>
+
               <InputForm
                 name="email_person"
                 inputProps={{ placeholder: "Email" }}
@@ -102,7 +111,7 @@ const ContactInfoInTabs = ({ belongTo }: ContactInfoInTabsProps) => {
               <Col span={12}>
                 <InputNumberForm
                   name="id_card"
-                  inputProps={{ placeholder: "Số CMND/Thẻ căn cước", min: 0}}
+                  inputProps={{ placeholder: "Số CMND/Thẻ căn cước", min: 0 }}
                 />
               </Col>
               <Col span={12}>
